@@ -9,7 +9,8 @@ export const translations = {
     nav_contact: "Contact.",
 
     // Hero
-    hero_title: "We Design & Build Creative Products",
+    hero_title: "IT Infrastructure & System Administrator",
+    hero_subtitle: "AI Automation & Cyber Security | Healthcare IT Systems (HIS, EHR, SIMRS, PACS, HRIS) | Network & Data Security",
     hero_btn: "Get in touch",
     hero_scroll: "Scroll",
 
@@ -76,6 +77,7 @@ export const translations = {
     proj_2_title: "Marketplace UMKM",
     proj_3_title: "BankKaltimtara Redesign",
     proj_4_title: "RSU Kartini Website",
+    proj_5_title: "Landing Page Enef Clinic",
 
     // Education
     edu_subtitle: "Education & Certifications",
@@ -114,7 +116,8 @@ export const translations = {
     nav_contact: "Kontak.",
 
     // Hero
-    hero_title: "Kami Merancang & Membangun Produk Kreatif",
+    hero_title: "Administrator Infrastruktur & Sistem IT",
+    hero_subtitle: "Otomasi AI & Keamanan Siber | Sistem IT Kesehatan (HIS, EHR, SIMRS, PACS, HRIS) | Keamanan Jaringan & Data",
     hero_btn: "Hubungi Saya",
     hero_scroll: "Gulir",
 
@@ -175,12 +178,13 @@ export const translations = {
     exp_7_desc: "Mengelola Ruang Server TI, memantau waktu aktif jaringan, dan memastikan keamanan serta stabilitas data rumah sakit.",
 
     // Projects
-    proj_subtitle: "Proyek Saya",
+    proj_subtitle: "Proyek Sasya",
     proj_title: "Karya Terbaru",
     proj_1_title: "Sistem RSML",
     proj_2_title: "Marketplace UMKM",
     proj_3_title: "Redesign Bank",
     proj_4_title: "RS Umum Kartini",
+    proj_5_title: "Landing Page Enef Clinic",
 
     // Education
     edu_subtitle: "Pendidikan & Sertifikasi",

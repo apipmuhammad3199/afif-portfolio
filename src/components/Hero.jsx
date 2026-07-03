@@ -8,14 +8,15 @@ const Hero = () => {
     <section className="hero" id="home">
       <figure className="hero-banner reveal-left">
         <picture>
-          <source srcSet="/assets/images/Afif.jpeg" media="(min-width: 768px)" />
-          <source srcSet="/assets/images/Afif.jpeg" media="(min-width: 500px)" />
-          <img src="/assets/images/Afif.jpeg" alt="Muhammad Afif Abiyyu" className="w-100" />
+          <source srcSet="./assets/images/Afif.jpeg" media="(min-width: 768px)" />
+          <source srcSet="./assets/images/Afif.jpeg" media="(min-width: 500px)" />
+          <img src="./assets/images/Afif.jpeg" alt="Muhammad Afif Abiyyu" className="w-100" />
         </picture>
       </figure>
 
       <div className="hero-content reveal-right">
         <h2 className="h2 hero-title">{t('hero_title')}</h2>
+        <p className="section-text" style={{ marginBottom: '2rem' }}>{t('hero_subtitle')}</p>
         <a href="#contact" className="btn btn-primary">{t('hero_btn')}</a>
       </div>
 

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
@@ -7,6 +8,7 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
+import Inbox from './components/Inbox';
 import { LanguageProvider } from './context/LanguageContext';
 import useScrollReveal from './hooks/useScrollReveal';
 
@@ -33,9 +35,17 @@ function AppContent() {
 }
 
 function App() {
+  const [hash, setHash] = useState(window.location.hash);
+
+  useEffect(() => {
+    const onHashChange = () => setHash(window.location.hash);
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
   return (
     <LanguageProvider>
-      <AppContent />
+      {hash === '#/inbox' ? <Inbox /> : <AppContent />}
     </LanguageProvider>
   );
 }

@@ -69,7 +69,7 @@ const Skills = () => {
                 <div className="skill-card">
                   <div className="tooltip">{skill.name}</div>
                   <div className="card-icon">
-                    <img src={`/assets/images/${skill.icon}`} alt={`${skill.name} logo`} />
+                    <img src={`./assets/images/${skill.icon}`} alt={`${skill.name} logo`} />
                   </div>
                 </div>
               </li>
@@ -84,7 +84,7 @@ const Skills = () => {
                 <div className="skill-card">
                   <div className="tooltip">{tool.name}</div>
                   <div className="card-icon">
-                    <img src={`/assets/images/${tool.icon}`} alt={`${tool.name} logo`} />
+                    <img src={`./assets/images/${tool.icon}`} alt={`${tool.name} logo`} />
                   </div>
                 </div>
               </li>

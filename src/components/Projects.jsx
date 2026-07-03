@@ -19,6 +19,10 @@ const Projects = () => {
     {
       title: t('proj_4_title'),
       image: 'RS Kartini.png'
+    },
+    {
+      title: t('proj_5_title'),
+      image: 'LandingPageKlinik.png'
     }
   ];
 
@@ -33,7 +37,7 @@ const Projects = () => {
             <li className="project-item reveal-scale" key={index}>
               <div className="project-card">
                 <figure className="card-banner">
-                  <img src={`/assets/images/${proj.image}`} alt={proj.title} className="w-100" />
+                  <img src={`./assets/images/${proj.image}`} alt={proj.title} className="w-100" />
                 </figure>
                 <div className="card-content">
                   <h3 className="h4 card-title">{proj.title}</h3>

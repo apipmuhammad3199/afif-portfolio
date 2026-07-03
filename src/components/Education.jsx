@@ -42,7 +42,7 @@ const Education = () => {
                 <div className="cert-card reveal-scale" key={index}>
                   <div className="cert-banner">
                     <div className="placeholder">
-                      <span><img src={`/assets/images/${cert.img}`} alt={cert.title} /></span>
+                      <span><img src={`./assets/images/${cert.img}`} alt={cert.title} /></span>
                     </div>
                   </div>
                   <div className="cert-content">
