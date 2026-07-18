@@ -18,6 +18,7 @@ const Skills = () => {
     { name: 'MySQL', icon: 'mysql.png' },
     { name: 'Firebase', icon: 'firebase.png' },
     { name: 'Laravel', icon: 'laravel.png' },
+    { name: 'Flutter', icon: 'flutter-icon.svg' },
   ];
 
   const toolsData = [

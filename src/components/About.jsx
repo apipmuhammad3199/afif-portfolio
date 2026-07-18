@@ -1,3 +1,4 @@
+import { IoRibbonOutline } from 'react-icons/io5';
 import { useLanguage } from '../context/LanguageContext';
 
 const About = () => {
@@ -11,6 +12,13 @@ const About = () => {
           alt="Muhammad Afif Abiyyu"
           className="w-100"
         />
+        <div className="about-badge">
+          <IoRibbonOutline className="about-badge-icon" />
+          <div>
+            <strong>8+</strong>
+            <span>{t('stat_years')}</span>
+          </div>
+        </div>
       </figure>
 
       <div className="about-content section-content reveal-right">

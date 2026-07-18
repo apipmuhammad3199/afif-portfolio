@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
 import { ref, get } from 'firebase/database';
-import { db } from '../firebase';
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { db, auth } from '../firebase';
 
 const Inbox = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(undefined); // undefined = checking, null = signed out
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [signingIn, setSigningIn] = useState(false);
 
   const fetchMessages = async () => {
+    setLoading(true);
     try {
       const snapshot = await get(ref(db, 'messages'));
       if (snapshot.exists()) {
@@ -24,45 +28,75 @@ const Inbox = () => {
       } else {
         setMessages([]);
       }
-      setLoading(false);
     } catch (err) {
       console.error('Error fetching messages: ', err);
+    } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+    });
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    if (user) {
       fetchMessages();
     }
-  }, [isAuthenticated]);
+  }, [user]);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (password === 'afif19216811') { // Using the default password requested
-      setIsAuthenticated(true);
-      setError('');
-    } else {
-      setError('Incorrect password');
+    setError('');
+    setSigningIn(true);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch {
+      setError('Invalid email or password');
+    } finally {
+      setSigningIn(false);
     }
   };
 
-  if (!isAuthenticated) {
+  const handleLogout = () => {
+    signOut(auth);
+  };
+
+  if (user === undefined) {
+    return null;
+  }
+
+  if (!user) {
     return (
       <section className="inbox-login" style={{ padding: '100px 20px', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div className="login-card" style={{ background: 'var(--bg-secondary)', padding: '40px', borderRadius: 'var(--radius-12)', textAlign: 'center', width: '100%', maxWidth: '400px' }}>
           <h2 className="h3" style={{ marginBottom: '20px' }}>Inbox Login</h2>
           <form onSubmit={handleLogin}>
-            <input 
-              type="password" 
-              placeholder="Enter Password"
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="input-field"
+              style={{ marginBottom: '15px' }}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="input-field"
               style={{ marginBottom: '15px' }}
+              required
             />
             {error && <p style={{ color: 'red', marginBottom: '15px' }}>{error}</p>}
-            <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>Login</button>
+            <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={signingIn}>
+              {signingIn ? 'Signing in...' : 'Login'}
+            </button>
           </form>
           <div style={{ marginTop: '20px' }}>
              <a href="#/" style={{ color: 'var(--text-secondary)' }}>&larr; Back to Portfolio</a>
@@ -76,7 +110,10 @@ const Inbox = () => {
     <section className="inbox-dashboard" style={{ padding: '100px 20px', minHeight: '100vh', maxWidth: '800px', margin: '0 auto' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
         <h2 className="h3">My Inbox</h2>
-        <a href="#/" className="btn btn-secondary">Logout / Home</a>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <a href="#/" className="btn btn-secondary">Home</a>
+          <button type="button" onClick={handleLogout} className="btn btn-secondary">Logout</button>
+        </div>
       </div>
 
       {loading ? (

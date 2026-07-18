@@ -1,16 +1,23 @@
-# React + Vite
+# Muhammad Afif Abiyyu — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio site built with React + Vite. Sections: Hero, Stats, About, Skills, Experience, Projects, Education, Contact. Supports English/Indonesian (`src/translations.js`) and light/dark theme. Contact form messages are stored in Firebase Realtime Database and readable via the `#/inbox` route.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + Vite
+- Firebase Realtime Database (contact form storage)
+- oxlint for linting
 
-## React Compiler
+## Scripts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+npm run dev       # start dev server
+npm run build     # production build to dist/
+npm run preview   # preview the production build
+npm run lint      # run oxlint
+npm run deploy    # build and publish dist/ to GitHub Pages
+```
 
-## Expanding the Oxlint configuration
+## Firebase setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+`src/firebase.js` holds the Firebase client config (safe to expose — it's not a secret). Access control is enforced by the **Realtime Database security rules** in the Firebase console, not by anything in this repo. The `#/inbox` login screen is a UI gate only; make sure the database rules require authentication before relying on it to protect submitted messages.
