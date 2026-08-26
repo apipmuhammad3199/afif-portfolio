@@ -24,12 +24,24 @@ const Skills = () => {
   const toolsData = [
     { name: 'Git', icon: 'git.png' },
     { name: 'GitHub', icon: 'github.png' },
-    { name: 'NPM', icon: 'npm.png' },
+    { name: 'Docker', icon: 'docker.png' },
     { name: 'VS Code', icon: 'vs-code.png' },
     { name: 'Postman', icon: 'postman.png' },
-    { name: 'Docker', icon: 'docker.png' },
     { name: 'Figma', icon: 'figma.png' },
     { name: 'Command Line', icon: 'command.png' },
+    { name: 'NPM', icon: 'npm.png' },
+  ];
+
+  const securityData = [
+    { name: 'Kali Linux', icon: 'kali-color.svg' },
+    { name: 'Ubuntu', icon: 'ubuntu-icon.svg' },
+    { name: 'Debian', icon: 'debian-color.svg' },
+    { name: 'Arch Linux', icon: 'arch-color.svg' },
+    { name: 'Linux OS', icon: 'linux-os.svg' },
+    { name: 'Wireshark', icon: 'wireshark-color.svg' },
+    { name: 'Metasploit', icon: 'metasploit-color.svg' },
+    { name: 'Burp Suite', icon: 'burpsuite-color.svg' },
+    { name: 'pfSense', icon: 'pfsense-color.svg' },
   ];
 
   return (
@@ -58,6 +70,13 @@ const Skills = () => {
             onClick={() => setActiveTab('tools')}
           >
             {t('skills_tab_tools')}
+          </button>
+
+          <button 
+            className={`toggle-btn ${activeTab === 'security' ? 'active' : ''}`} 
+            onClick={() => setActiveTab('security')}
+          >
+            {t('skills_tab_security')}
           </button>
         </div>
       </div>
@@ -92,9 +111,25 @@ const Skills = () => {
             ))}
           </ul>
         )}
+
+        {activeTab === 'security' && (
+          <ul className="tools-list reveal-scale">
+            {securityData.map((sec, index) => (
+              <li key={index}>
+                <div className="skill-card">
+                  <div className="tooltip">{sec.name}</div>
+                  <div className="card-icon">
+                    <img src={`./assets/images/${sec.icon}`} alt={`${sec.name} logo`} />
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   );
 };
 
 export default Skills;
+

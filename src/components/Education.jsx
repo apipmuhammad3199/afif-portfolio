@@ -1,7 +1,10 @@
+import { useState } from 'react';
+import { IoCloseOutline, IoEyeOutline } from 'react-icons/io5';
 import { useLanguage } from '../context/LanguageContext';
 
 const Education = () => {
   const { t } = useLanguage();
+  const [selectedCert, setSelectedCert] = useState(null);
 
   const certifications = [
     { title: 'Axioo Class Program', issuer: t('cert_1'), img: 'axioo1.png' },
@@ -19,30 +22,44 @@ const Education = () => {
         
         <div className="education-wrapper">
           <div className="education-timeline">
-            <h3 className="h4 section-title" style={{ marginBottom: '20px' }}>{t('edu_timeline_title')}</h3>
+            <h3 className="h4 section-title timeline-heading">{t('edu_timeline_title')}</h3>
             
             <div className="timeline">
               <div className="timeline-item reveal-right">
-                <h4 className="timeline-title">{t('edu_1_school')}</h4>
-                <p className="timeline-subtitle">{t('edu_1_degree')} (2020 - Present)</p>
+                <div className="timeline-dot"></div>
+                <div className="timeline-card">
+                  <h4 className="timeline-title">{t('edu_1_school')}</h4>
+                  <p className="timeline-subtitle">{t('edu_1_degree')}</p>
+                  <span className="timeline-date">2020 - Present</span>
+                </div>
               </div>
               
               <div className="timeline-item reveal-right">
-                <h4 className="timeline-title">{t('edu_2_school')}</h4>
-                <p className="timeline-subtitle">{t('edu_2_degree')} (2015 - 2018)</p>
+                <div className="timeline-dot"></div>
+                <div className="timeline-card">
+                  <h4 className="timeline-title">{t('edu_2_school')}</h4>
+                  <p className="timeline-subtitle">{t('edu_2_degree')}</p>
+                  <span className="timeline-date">2015 - 2018</span>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="education-cert">
-            <h3 className="h4 section-title" style={{ marginBottom: '20px' }}>{t('edu_cert_title')}</h3>
+            <h3 className="h4 section-title cert-heading">{t('edu_cert_title')}</h3>
             
             <div className="cert-grid">
               {certifications.map((cert, index) => (
-                <div className="cert-card reveal-scale" key={index}>
+                <div 
+                  className="cert-card reveal-scale" 
+                  key={index}
+                  onClick={() => setSelectedCert(cert)}
+                  title="Click to view certificate"
+                >
                   <div className="cert-banner">
-                    <div className="placeholder">
-                      <span><img src={`./assets/images/${cert.img}`} alt={cert.title} /></span>
+                    <img src={`./assets/images/${cert.img}`} alt={cert.title} />
+                    <div className="cert-overlay">
+                      <span className="cert-view-btn"><IoEyeOutline /> View</span>
                     </div>
                   </div>
                   <div className="cert-content">
@@ -55,6 +72,25 @@ const Education = () => {
           </div>
         </div>
       </div>
+
+      {selectedCert && (
+        <div className="cert-modal-backdrop" onClick={() => setSelectedCert(null)}>
+          <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="cert-modal-close" 
+              onClick={() => setSelectedCert(null)}
+              aria-label="Close modal"
+            >
+              <IoCloseOutline />
+            </button>
+            <img src={`./assets/images/${selectedCert.img}`} alt={selectedCert.title} className="cert-modal-img" />
+            <div className="cert-modal-info">
+              <h3 className="h4">{selectedCert.title}</h3>
+              <p>{selectedCert.issuer}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

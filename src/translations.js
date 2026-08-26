@@ -32,6 +32,7 @@ export const translations = {
     skills_text: "I specialize in hospital IT systems, network infrastructure, hardware diagnostics, and web development to ensure seamless and secure operations.",
     skills_tab_skills: "Skills",
     skills_tab_tools: "Tools",
+    skills_tab_security: "Cyber Security & OS",
 
     // Experience
     exp_subtitle: "Experience",
@@ -150,6 +151,7 @@ export const translations = {
     skills_text: "Saya mengkhususkan diri dalam sistem TI rumah sakit, infrastruktur jaringan, diagnostik perangkat keras, dan pengembangan web untuk memastikan operasi yang mulus dan aman.",
     skills_tab_skills: "Keahlian",
     skills_tab_tools: "Alat",
+    skills_tab_security: "Keamanan Siber & OS",
 
     // Experience
     exp_subtitle: "Pengalaman",
