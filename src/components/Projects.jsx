@@ -38,6 +38,11 @@ const Projects = () => {
       title: t('proj_7_title'),
       tag: t('proj_7_tag'),
       image: 'pusatpenjaminmutupoltek.png'
+    },
+    {
+      title: t('proj_8_title'),
+      tag: t('proj_8_tag'),
+      image: 'eliteagrotrade.png'
     }
   ];
 

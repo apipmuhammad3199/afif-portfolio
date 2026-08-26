@@ -87,6 +87,8 @@ export const translations = {
     proj_6_tag: "Web App",
     proj_7_title: "Web Mutu Politeknik",
     proj_7_tag: "Website",
+    proj_8_title: "CV. Elite Agrotrade Website",
+    proj_8_tag: "B2B Export Website",
 
     // Education
     edu_subtitle: "Education & Certifications",
@@ -203,6 +205,8 @@ export const translations = {
     proj_6_tag: "Web App",
     proj_7_title: "Web Mutu Politeknik",
     proj_7_tag: "Website",
+    proj_8_title: "Website CV. Elite Agrotrade",
+    proj_8_tag: "Website Ekspor",
 
     // Education
     edu_subtitle: "Pendidikan & Sertifikasi",

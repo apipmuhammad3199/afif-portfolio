@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IoVolumeMuteOutline, IoVolumeHighOutline, IoMoonOutline, IoSunnyOutline } from 'react-icons/io5';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -7,6 +7,7 @@ const Header = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const audioRef = useRef(null);
   
   const { lang, changeLang, t } = useLanguage();
 
@@ -30,10 +31,30 @@ const Header = () => {
 
   const toggleNav = () => setIsNavOpen(!isNavOpen);
   const toggleTheme = () => setIsDarkTheme(!isDarkTheme);
-  const toggleMusic = () => setIsMusicPlaying(!isMusicPlaying);
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isMusicPlaying) {
+        audioRef.current.pause();
+        setIsMusicPlaying(false);
+      } else {
+        audioRef.current.play().then(() => {
+          setIsMusicPlaying(true);
+        }).catch((err) => {
+          console.error("Audio playback error:", err);
+        });
+      }
+    }
+  };
 
   return (
     <header className={`header ${isScrolled ? 'active' : ''}`}>
+      <audio
+        ref={audioRef}
+        src="./assets/file/sounddelicious-portfolio-harmony-221983.mp3"
+        loop
+        preload="auto"
+        onEnded={() => setIsMusicPlaying(false)}
+      />
       <div className="container">
         <h1 className="logo">
           <a href="#">Muhammad Afif<span>.</span></a>
@@ -52,9 +73,9 @@ const Header = () => {
           </select>
 
           <button
-            className="music-btn"
+            className={`music-btn ${isMusicPlaying ? 'playing' : ''}`}
             aria-label="Toggle Music"
-            title="Toggle Music"
+            title={isMusicPlaying ? "Mute Background Music" : "Play Background Music"}
             onClick={toggleMusic}
           >
             {isMusicPlaying ? <IoVolumeHighOutline className="icon" /> : <IoVolumeMuteOutline className="icon" />}
