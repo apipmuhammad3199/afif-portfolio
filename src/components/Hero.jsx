@@ -8,9 +8,9 @@ const Hero = () => {
     <section className="hero" id="home">
       <figure className="hero-banner reveal-left">
         <picture>
-          <source srcSet="./assets/images/Afif.jpeg" media="(min-width: 768px)" />
-          <source srcSet="./assets/images/Afif.jpeg" media="(min-width: 500px)" />
-          <img src="./assets/images/Afif.jpeg" alt="Muhammad Afif Abiyyu" className="w-100" />
+          <source srcSet="./assets/images/afif.jpg" media="(min-width: 768px)" />
+          <source srcSet="./assets/images/afif.jpg" media="(min-width: 500px)" />
+          <img src="./assets/images/afif.jpg" alt="Muhammad Afif Abiyyu" className="w-100" />
         </picture>
       </figure>
 

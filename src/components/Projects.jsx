@@ -33,6 +33,11 @@ const Projects = () => {
       title: t('proj_6_title'),
       tag: t('proj_6_tag'),
       image: 'carsystem.png'
+    },
+    {
+      title: t('proj_7_title'),
+      tag: t('proj_7_tag'),
+      image: 'pusatpenjaminmutupoltek.png'
     }
   ];
 

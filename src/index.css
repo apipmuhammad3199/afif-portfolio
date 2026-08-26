@@ -453,6 +453,9 @@ h1, h2, h3, h4, h5, h6 {
   border: 4px solid var(--glass-border);
   width: 100%;
   max-width: 500px;
+  aspect-ratio: 5 / 8;
+  object-fit: cover;
+  object-position: center 30%;
   margin: 0 auto;
 }
 

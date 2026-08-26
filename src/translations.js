@@ -85,6 +85,8 @@ export const translations = {
     proj_5_tag: "Landing Page",
     proj_6_title: "Car Management System",
     proj_6_tag: "Web App",
+    proj_7_title: "Web Mutu Politeknik",
+    proj_7_tag: "Website",
 
     // Education
     edu_subtitle: "Education & Certifications",
@@ -199,6 +201,8 @@ export const translations = {
     proj_5_tag: "Landing Page",
     proj_6_title: "Sistem Manajemen Mobil",
     proj_6_tag: "Web App",
+    proj_7_title: "Web Mutu Politeknik",
+    proj_7_tag: "Website",
 
     // Education
     edu_subtitle: "Pendidikan & Sertifikasi",
